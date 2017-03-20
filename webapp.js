@@ -8,6 +8,7 @@ var bread = false;
 var sword = false;
 
 //The story variable determines where the text will appear. In this case, that is the "story" div.
+//The "btn" variables define the buttons in the game. For the majority of the storyline, only "btn1" and "btn2" are used. "btn3" and "btn4" are used for the end-defining choice.
 function displayStory(choice) {
 	var story = "";
 	var btn1 = "";
@@ -16,8 +17,9 @@ function displayStory(choice) {
 	var btn4 = "";
 	switch(choice) {
 		
+		
+//The case "beginning" is used at the end of the game, when the player fails and must return to the start. (or when the GAME OVER alert comes up.)
 //Bread or Sword - This choice is arguably one of the most important in the game. It starts you off and affects your fate early in the game.
-
 	case "beginning":
 	case "bread/sword":
 				story = "You wake up in a dark, dreary cave. You have no memory of your previous life, and the only thing in your mind is the echo of water dripping from the ceiling. You grab a backpack that sits in front of you on the cave floor. You have a pocket knife, some rope, dried fruit that won't last long, a water bottle half-full, and a jagged rock. You see two things in the cave: A sword and a package of bread. Which do you take? Only one will fit in your backpack.";
@@ -35,7 +37,6 @@ function displayStory(choice) {
 	case "Checkpoint1":
 	
 	//Whether the player chooses bread or sword, they will progress to the same choices. However, whether they chose to keep the bread or the sword will affect their fate later on.
-	
 	case "bread":
 	case "sword":
 				story = "You notice a long hallway leading out of the cave. When you reach the end of the hallway, you are met with two doors. One is bright green and earthy, surrounded by vines. A cool breeze wafts from the crack beneath it. The other is black as coal, and is strangled with dried, withering tree branches. Intense heat flames from it. Which door will you choose?";
@@ -49,7 +50,8 @@ function displayStory(choice) {
 				break;
 		
 		
-//door 1	
+//door 1 - the first door, and whether the user chose bread or sword will affect which choices come up and how the NPCs (non-player characters) react to them.
+//The if statement determines which choices the player is given. Certain choices WILL lead to death.
 	case "door1":
 			if (bread) {
 				story = "You turn the mahogany handle of the door. You emerge on a hill surrounded by rolling fields. Down the hill, peasants drenched in sweat and dressed in faded rags labor away, picking some kind of pale blue cotton. Cruel-faced supervisors pace behind them, watching their work and carrying sharp-looking batons. You walk down the hill, hoping that your own tattered clothes will blend in with theirs. You come to an area where no supervisors seem to be watching. You chose the BREAD. The people have hunger-hollowed cheeks, so you give them some of your bread. They immediately trust you, and allow you to work beside them and hide yourself. The few people near you now trust you, and they decide to help conceal you. The supervisor arrives to monitor your laboring progress and begins taunting those beside you. Will you stand up to the supervisor or make friends with him";
@@ -73,16 +75,19 @@ function displayStory(choice) {
 			}
 			break;
 			
-//(bread) stand up/make friends
+//(bread) stand up/make friends - This is a minor choice, meaning it will either lead to death or the continue button.
 		
 	case "makeFriends":
 				story = "You crack a funny joke at the supervisor. He looks at you blankly for a moment, but then his dark bearded face stretches into a smile. He pats your back and tells you that he will help you, sending you to a building in the distance.";
 				btn1 = document.createElement("BUTTON");
 				btn1.setAttribute("onClick", "displayStory('continue')");
 				btn1.innerHTML = "Continue...";
+				alert("ACHIEVEMENT 001: Clever move. Keep making friends like this and you'll escape soon enough.");
 				break;
 				//ACHIEVEMENT: BUILDING
-			
+	
+//This is the first "death oppurtunity" in the game. It is also the reason why we placed checkpoints throughout the code. If the player chooses to stand up to the supervisor, they will die and be given the option to return to the last checkpoint.
+
 	case "standUpToSupervisor":
 				story = "The taunts that the supervisor shoots at the laborers anger you. You stand up and he narrows his eyes at you. For a brief moment, you glare at each other. Suddenly, all you can see is the glint of his sword in the sunlight and then....darkness. sorry, you're DEAD!";
 				btn1 = document.createElement("BUTTON");
@@ -91,7 +96,7 @@ function displayStory(choice) {
 				break;
 		//RETURN TO CHECKPOINT//
 		
-//(sword) standUp/keep head down
+//(sword) standUp/keep head down - another minor choice. 
 			
 	case "keepHeadDown":
 				story = "Though you stay well hidden among the group of laborers, you notice the supervisor is eyeing you strangely. You realize that he sees the sword hidden in your belt. You look back at him, hoping he will do nothing. Suddenly, he nocks an arrow in the bow on his back. Before you can react, he has released the bowstring. Sorry, you're DEAD!";
@@ -106,12 +111,12 @@ function displayStory(choice) {
 				btn1 = document.createElement("BUTTON");
 				btn1.setAttribute("onClick", "displayStory('continue')");
 				btn1.innerHTML = "Continue...";
+				alert("ACHIEVEMENT 001: Your reflexes will save you. But don't make promises you can't keep!");
 				break;
-		//ACHIEMENT: BUILDING
 		
 		
 		
-//Door 2	
+//Door 2	- the second door, and whether the user chose bread or sword will affect which choices come up and how the NPCs (non-player characters) react to them.
 	case "door2":
 
 //door 2 (bread)
@@ -127,7 +132,7 @@ function displayStory(choice) {
 				story ="You use the end of your shirt to turn the knob, as it is too hot. You enter a dark forest of fire-blackened trees. The sky is so full of smog that it has a grayish tinge and it is impossible to tell whether it is day or night. The only light in the vicinity comes from the dim glow of flames licking at the trees. The faint howling of wolves can be heard in the distance, miles away. After a moment you realize the howls are getting louder and louder. Suddenly, a gray blur leaps out of the shadowy trees. Several more gray blurs follow it.";
 				btn1 = document.createElement("BUTTON");
 				btn1.setAttribute("onClick", "displayStory('runForDoor/climbTree')");
-				btn1.innerHTML = "Continue your journey...";		
+				btn1.innerHTML = "Face the wolves.";		
 				}
 				break;
 			
@@ -153,9 +158,14 @@ function displayStory(choice) {
 				btn1 = document.createElement("BUTTON");
 				btn1.setAttribute("onClick", "displayStory('continue')");
 				btn1.innerHTML = "Continue...";
+				alert("ACHIEVEMENT 001:You're fast... but are you smart enough to make it out alive?");
 				break;
-	
-			
+				
+alert("ACHIEVEMENT 002: So close, yet so far! You made it to the building!");
+
+//All of the choices branch back to the building to make coding easier. Now, the player's destination is whatever lies beyond the building.
+//The next defining choice determines who the player's companion will be. This choice will greatly affect the next storyline and the user's fate.
+alert("GOAL 002: Escape_building");		
 case "Checkpoint2":		
 	case "continue":
 				story = "As you sneak through the building, wondering if it is inhabited, you hear a chorus of thousands of footsteps. You begin to run, and come to a supply room with an opened door. Your go inside and there is an exit on either side of you. A figure runs in from each side. One is a violet-eyed girl with a long sheet of dark hair. The other is a confident-looking, brown-haired youth. Both yell for you to come with them if you want to live. Who will be your companion? Choose wisely.";
@@ -166,7 +176,8 @@ case "Checkpoint2":
 				btn2.setAttribute("onClick", "displayStory('Violet')");
 				btn2.innerHTML = "The violet eyed girl";
 				break;
-			
+alert("GOAL 003: Cooperate_to_Escape");
+//The next checkpoint. Its purpose is to return the player back to the beginning of the Alec branch, so that they do not have to make the companion choice again.	
 case "Checkpoint3":		
 	case "Alec":
 				story="You run towards the brown haired boy, happy to be heading away from the increasingly loud footsteps. He introduces himself as Alec, and drags you to a door that you never would have noticed if you were on your own. it was a wise decision to choose him. As you slide through the door, you realize that the footsteps have become quieter. Alec stumbles over a pipe. As you help him up, you hear a large crash nearby. Do you choose to run after Alec, or do you you knock him out and leave him behind for whatever caused the sound?";
@@ -201,7 +212,9 @@ case "Checkpoint3":
 				btn1.setAttribute("onClick", "displayStory('Checkpoint3')");
 				btn1.innerHTML = "Try again from the last checkpoint";
 				break;
-			
+
+//A new checkpoint makes sure that you won't be pulled all the way back to the beginning of the Alec storyline.
+
 case "Checkpoint4":			
 	case "hideFromHood":
 				story = "You dive behind a thick pipe, and Alec follows quickly. The figure begins to whisper excitedly about someting and you feel compelled to stay hidden and listen in on the conversation. You learn about a mysterious phenomenon called the Silver arrow and when the figures retreaat into the darkness, you question Alec about this discovery.";
@@ -228,6 +241,7 @@ case "Checkpoint4":
 				btn1.innerHTML = "Acquire Information";
 				break;
 			
+			
 	case "Violet":
 				story = "The brown-haired boy flees from the room as the sound of footsteps gets louder. The girl cocks her head at you and says, 'Nice choice. I'm Violet.' She motions for you to follow her and goes into a room off to the side. As you hear low, raspy voices, Violet pushes you to the ground, knocking the wind out of you. She flattens you against the cool floor. Do you stay still and trust her or fight back in fear that you chose the wrong companion? ";
 				btn1 = document.createElement("BUTTON");
@@ -239,7 +253,7 @@ case "Checkpoint4":
 				break;
 			
 	case "fightBack":
-				story = "";
+			story = "You struggle, kicking and screaming. You pull yourself away and run out into the hallway. There, a squadron of soldiers awaits you. Sorry, you're DEAD.";
 			btn1 = document.createElement("BUTTON");
 			btn1.setAttribute("onClick", "displayStory('Checkpoint2')");
 			btn1.innerHTML = "Try again from the last checkpoint";
