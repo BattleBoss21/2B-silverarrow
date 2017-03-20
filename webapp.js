@@ -1,10 +1,13 @@
 
 // JavaScript Document
-//Use for storylines
+//Use for storyline branching
 //Introduction
 
+//The bread or sword variables allow us to alter the player's fate later on, depending on whether they chose bread or sword.
 var bread = false;
 var sword = false;
+
+//The story variable determines where the text will appear. In this case, that is the "story" div.
 function displayStory(choice) {
 	var story = "";
 	var btn1 = "";
@@ -13,7 +16,7 @@ function displayStory(choice) {
 	var btn4 = "";
 	switch(choice) {
 		
-//Door 1 or 2
+//Bread or Sword - This choice is arguably one of the most important in the game. It starts you off and affects your fate early in the game.
 
 	case "beginning":
 	case "bread/sword":
@@ -22,9 +25,17 @@ function displayStory(choice) {
 				btn1.setAttribute("onClick", "displayStory('bread')");
 				btn1.innerHTML = ("Continue your journey...");
 				break;
+	
+	
+	//This is the very first goal of the game. It informs the player what their current task is.
+	
+	alert("GOAL 001: Escape_cave");
 
-
+	//This is the very first checkpoint of the game. Its purpose is to return the player back to a certain point in the game when they die. This keeps them entertained, and they will not return to the beginning every time they die.
 	case "Checkpoint1":
+	
+	//Whether the player chooses bread or sword, they will progress to the same choices. However, whether they chose to keep the bread or the sword will affect their fate later on.
+	
 	case "bread":
 	case "sword":
 				story = "You notice a long hallway leading out of the cave. When you reach the end of the hallway, you are met with two doors. One is bright green and earthy, surrounded by vines. A cool breeze wafts from the crack beneath it. The other is black as coal, and is strangled with dried, withering tree branches. Intense heat flames from it. Which door will you choose?";
