@@ -298,13 +298,15 @@ case "whatIsTheSilverArrow":
 			btn1.setAttribute("onClick", "displayStory('rest')");
 			btn1.innerHTML = "Rest and prepare for the journey to come";
 			break; 
-			
+
+alert("GOAL: Find_Silver_Arrow")
 case "rest":
 			story = "You and you're companion rest in your secluded corner, discussing your game plan for the next day. You feel confident about the plan, but forget about that as the darkness of sleep envelops you.";
 			btn1 = document.createElement("BUTTON");
 			btn1.setAttribute("onClick", "displayStory('continueAgain')");
 			btn1.innerHTML = "Continue";
 			break; 
+
 case "Checkpoint6":		
 case "continueAgain":
 			story = "You wake up to the sound of your companion rifling through your supplies for the day. You start to pack as well, and decide that you will be heading out in a few moments. As you leave the building you are faced with a broken wooden fence and a white picket fence. Which will you choose?";
