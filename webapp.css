@@ -172,6 +172,7 @@ body {
 	#story, #choices, #goal {
 		width: 40%;
 		font-size: 13px;
+		
 	}
 	#health, #inventory {
 		width: 39%;
@@ -180,6 +181,8 @@ body {
 	#story {
 		height: 500px;
 		padding-top: 9px;
+	
+
 	}
 	#inventory {
 		height: 623px;
@@ -194,6 +197,7 @@ body {
 		
 		#story, #choices {
 			font-size: 14px;	
+			float: left;
 		}
 		
 		#bread, #heart {
@@ -206,6 +210,7 @@ body {
 		}
 	 	#story {
 			height: 300px;	
+			float: left;
 		}
 		#health, #goal, #choices, #inventory, #story {
 			float: none;
@@ -216,6 +221,7 @@ body {
 @media screen and (max-width: 480px) {
 		#goal {
 			height: auto;
+	
 		}
 		
 		#health, #goal, #choices {
@@ -244,5 +250,6 @@ and (max-device-width: 568px) {
 	#story {
 		height: 200px;	
 		font-size: 20px;
+		float: left;
 	}
 }
